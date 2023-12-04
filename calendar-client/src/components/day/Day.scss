@@ -1,0 +1,65 @@
+// I should fix dublicate code in the future and use import or use
+$colors: indigo, gray, green, blue, red, purple;
+
+.day-component {
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+
+    &.not-current-month {
+        background-color: rgb(234, 234, 234);
+    }
+
+    &.current {
+        border-color: rgb(26, 100, 191);
+        border-width: 2px;
+        border-style: solid;
+    }
+
+    .task-card {
+        background-color: white;
+        padding: 1px;
+        margin-right: 3px;
+        margin-left: 3px;
+        color: rgb(75, 85, 99);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        @each $color in $colors {
+
+            .#{$color}-label {
+                background-color: $color;
+                width: 40px;
+                height: 0.5rem;
+                /* 24px */
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .holiday-label {
+            background-color: lightblue;
+            width: 40px;
+            height: 0.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    }
+}
+
+.day-component>current {
+    border-color: blue;
+}
