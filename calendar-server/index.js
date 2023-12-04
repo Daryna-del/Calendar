@@ -4,10 +4,16 @@ const cors = require('cors');
 const { createTask, getTask, deleteTask, updateTask, getAllTasks } = require('./controllers/taskController.js');
 
 const app = express();
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://calendar-kqmtp1dzm-daryna-pastushenkos-projects.vercel.app/",
+        methods: ['POST', 'GET'],
+        credentials: true
+    }
+));
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/CalendarDB');
+mongoose.connect('mongodb+srv://DarynaPas:<password>@cluster0.brmpln1.mongodb.net/?retryWrites=true&w=majority');
 
 app.post('/add', createTask);
 app.get('/get', getTask);
